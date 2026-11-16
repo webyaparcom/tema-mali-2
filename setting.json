@@ -1,0 +1,54 @@
+{
+  "order": false,
+  "user": false,
+  "description": {
+    "tr": "Vade Mali Ofis: muhasebe, beyanname, bordro ve şirket kuruluşu için ön görüşme ve teklif talebi. Demo site; içerik kurgusaldır.",
+    "en": "Vade Mali Ofis: initial meetings and quote requests for bookkeeping, tax returns, payroll and company formation. Demo site; content is fictional.",
+    "ar": "فاده للشؤون المالية: لقاءات أولية وطلبات عروض للمحاسبة والإقرارات الضريبية والرواتب وتأسيس الشركات. موقع تجريبي؛ المحتوى افتراضي."
+  },
+  "keyword": {
+    "tr": "mali müşavir, SMMM, muhasebe, beyanname, bordro, şirket kuruluşu",
+    "en": "certified accountant, bookkeeping, tax return, payroll, company formation",
+    "ar": "محاسب قانوني، مسك الدفاتر، إقرار ضريبي، رواتب، تأسيس شركة"
+  },
+  "category": "Kurumsal",
+  "name": "Vade Mali Ofis",
+  "domain": "mali-2.webyapar.com",
+  "langs": {
+    "tr": true,
+    "en": true,
+    "ar": true,
+    "de": false,
+    "ru": false,
+    "es": false,
+    "fr": false,
+    "it": false,
+    "ja": false,
+    "zh": false,
+    "ko": false,
+    "pt": false
+  },
+  "logo": "logo.png",
+  "multi": false,
+  "publishMode": "static",
+  "font": {
+    "body": "noto-sans",
+    "heading": "montserrat",
+    "ar": {
+      "body": "ibm-plex-sans-arabic",
+      "heading": "noto-kufi-arabic"
+    }
+  },
+  "colorScheme": "auto",
+  "theme_color": "#1E3A5F",
+  "seo": {
+    "noindex": true
+  },
+  "cssTokens": {
+    "--mx-radius-sm": "4px",
+    "--mx-radius-md": "6px",
+    "--mx-radius-lg": "8px",
+    "--mx-radius-xl": "11px"
+  },
+  "icon": "icon.png"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "tpzghmjsjn",
+  "name": {
+    "tr": "Hizmetler",
+    "en": "Services",
+    "ar": "الخدمات"
+  },
+  "description": {
+    "tr": "Muhasebe, beyanname, bordro ve kuruluş hizmetleri.",
+    "en": "Bookkeeping, returns, payroll and formation services.",
+    "ar": "خدمات المحاسبة والإقرارات والرواتب والتأسيس."
+  },
+  "keyword": {
+    "tr": "Hizmet dizini",
+    "en": "Service index",
+    "ar": "فهرس الخدمات"
+  },
+  "path": "hizmetler",
+  "icon": "work",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "nn2cm1",
+      "iccqvy"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Hizmetler",
+    "en": "Services",
+    "ar": "الخدمات"
+  },
+  "date": "2026-11-16T12:10:12.625Z",
+  "update": "2026-11-16T12:20:48.375Z"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "kalitepolitikamiz",
+  "name": {
+    "tr": "Kalite Politikamız",
+    "en": "Quality Policy",
+    "ar": "سياسة الجودة"
+  },
+  "description": {
+    "tr": "Kalite politikamız",
+    "en": "Our quality policy",
+    "ar": "سياسة الجودة لدينا"
+  },
+  "keyword": {
+    "tr": "Kalite Politikamız",
+    "en": "quality policy, quality, continuous improvement",
+    "ar": "سياسة الجودة, الجودة, التحسين المستمر"
+  },
+  "path": "kalitepolitikamiz",
+  "icon": "verified",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [],
+    "footer": []
+  },
+  "index": 2,
+  "url": "",
+  "text": {
+    "tr": "<h2>Kalite Politikamız</h2>\n<p>Yazılı hizmet sözleşmesi, vergi takvimi hatırlatması ve mesleki sır saklama.</p>",
+    "en": "<h2>Our quality policy</h2>\n<p>A written engagement letter, tax calendar reminders and professional secrecy.</p>",
+    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>عقد خدمة مكتوب وتذكير بالتقويم الضريبي وكتمان السر المهني.</p>"
+  },
+  "title": {
+    "tr": "Kalite Politikamız",
+    "en": "Quality Policy",
+    "ar": "سياسة الجودة"
+  },
+  "date": "2026-11-16T12:10:12.479Z",
+  "update": "2026-11-16T12:20:48.403Z",
+  "sablonIzi": "acedf6b7c400faec",
+  "sablonIziDil": {
+    "en": "587042c99dce90ca",
+    "ar": "a5348f544603b25e"
+  }
+}

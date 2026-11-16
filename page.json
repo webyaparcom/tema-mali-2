@@ -1,0 +1,163 @@
+{
+  "data": [
+    {
+      "id": "tpzghmjsjn",
+      "name": {
+        "tr": "Hizmetler",
+        "en": "Services",
+        "ar": "الخدمات"
+      },
+      "description": {
+        "tr": "Muhasebe, beyanname, bordro ve kuruluş hizmetleri.",
+        "en": "Bookkeeping, returns, payroll and formation services.",
+        "ar": "خدمات المحاسبة والإقرارات والرواتب والتأسيس."
+      },
+      "path": "hizmetler",
+      "icon": "work",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "nn2cm1",
+          "iccqvy"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "name": {
+        "tr": "Ofis",
+        "en": "Office",
+        "ar": "المكتب"
+      },
+      "status": "play",
+      "id": "hakkimizda",
+      "path": "hakkimizda",
+      "category": "",
+      "url": "",
+      "index": 1,
+      "icon": "info",
+      "desing": {
+        "header": [],
+        "body": [
+          "3ghln9",
+          "2f6a0s"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Muhasebe, beyanname ve bordro; ön görüşmeyle.",
+        "en": "Bookkeeping, tax returns and payroll; starting with a meeting.",
+        "ar": "المحاسبة والإقرارات والرواتب؛ بدءًا بلقاء."
+      }
+    },
+    {
+      "id": "cdvp4teohe",
+      "name": {
+        "tr": "Müşavirler",
+        "en": "Accountants",
+        "ar": "المحاسبون"
+      },
+      "description": {
+        "tr": "Sizi karşılayan çalışanlarımız.",
+        "en": "The staff who welcomes you.",
+        "ar": "الموظفون الذين يستقبلونكم."
+      },
+      "path": "ekip",
+      "icon": "groups",
+      "category": "hakkimizda",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "6d45o4"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "id": "waxa6rm2el",
+      "name": {
+        "tr": "Sorular",
+        "en": "Questions",
+        "ar": "الأسئلة"
+      },
+      "description": {
+        "tr": "Merak edilenler ve kısa yanıtlar.",
+        "en": "Common questions and short answers.",
+        "ar": "أسئلة متكررة وإجابات موجزة."
+      },
+      "path": "sorular",
+      "icon": "help",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "bx9ywl",
+          "iccqvy"
+        ],
+        "footer": []
+      },
+      "index": 3
+    },
+    {
+      "id": "p0wpnx9cy2",
+      "name": {
+        "tr": "Teklif iste",
+        "en": "Request a quote",
+        "ar": "اطلب عرضًا"
+      },
+      "description": {
+        "tr": "Üç adımlı teklif sihirbazı (demo).",
+        "en": "Three-step quote wizard (demo).",
+        "ar": "معالج العرض في ثلاث خطوات (تجريبي)."
+      },
+      "path": "teklif-al",
+      "icon": "request_quote",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "q9phgb"
+        ],
+        "footer": []
+      },
+      "index": 4
+    },
+    {
+      "name": {
+        "tr": "İletişim",
+        "en": "Contact",
+        "ar": "اتصل بنا"
+      },
+      "status": "play",
+      "id": "iletisim",
+      "path": "iletisim",
+      "category": "",
+      "url": "",
+      "index": 5,
+      "icon": "call",
+      "desing": {
+        "header": [],
+        "body": [
+          "qkg0k9",
+          "k8mp01"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Adres, telefon ve çalışma saatleri.",
+        "en": "Address, phone and opening hours.",
+        "ar": "العنوان والهاتف وساعات العمل."
+      }
+    }
+  ],
+  "desc": []
+}

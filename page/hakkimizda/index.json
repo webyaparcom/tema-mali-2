@@ -1,0 +1,47 @@
+{
+  "name": {
+    "tr": "Ofis",
+    "en": "Office",
+    "ar": "المكتب"
+  },
+  "status": "play",
+  "category": "",
+  "id": "hakkimizda",
+  "url": "",
+  "path": "hakkimizda",
+  "index": 1,
+  "icon": "info",
+  "desing": {
+    "header": [],
+    "body": [
+      "3ghln9",
+      "2f6a0s"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Muhasebe, beyanname ve bordro; ön görüşmeyle.",
+    "en": "Bookkeeping, tax returns and payroll; starting with a meeting.",
+    "ar": "المحاسبة والإقرارات والرواتب؛ بدءًا بلقاء."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Ofis",
+    "en": "Office",
+    "ar": "المكتب"
+  },
+  "keyword": {
+    "tr": "hakkımızda",
+    "en": "about",
+    "ar": "من نحن"
+  },
+  "text": {},
+  "update": "2026-11-16T12:20:48.380Z",
+  "date": "2026-10-30"
+}
