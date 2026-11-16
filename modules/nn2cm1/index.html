@@ -1,0 +1,120 @@
+<section class="modulex-deger-uzmanlik-dizin{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-deger-uzmanlik-dizin-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* deger-uzmanlik-dizin — deger-sekme'den farkı: role=tab/tabpanel ve tıklama zorunluluğu yerine önizleme (hover/odak) ana-detay — tek panel seçilen satırın klonuyla dolar, dizin noktalı içindekiler satırlarıdır; deger-akordeon/deger-cip-sec gibi yerinde açılmaz. */
+  .modulex-deger-uzmanlik-dizin { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-deger-uzmanlik-dizin *, .modulex-deger-uzmanlik-dizin *::before, .modulex-deger-uzmanlik-dizin *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-deger-uzmanlik-dizin :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-deger-uzmanlik-dizin :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-deger-uzmanlik-dizin :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-deger-uzmanlik-dizin :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-deger-uzmanlik-dizin img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-deger-uzmanlik-dizin) img { height: auto; }
+  .modulex-deger-uzmanlik-dizin [hidden] { display: none !important; }
+  .modulex-deger-uzmanlik-dizin :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-deger-uzmanlik-dizin :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-deger-uzmanlik-dizin-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-deger-uzmanlik-dizin-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-deger-uzmanlik-dizin--bassiz .modulex-deger-uzmanlik-dizin-bas { display: none; }
+  .modulex-deger-uzmanlik-dizin-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-deger-uzmanlik-dizin-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-deger-uzmanlik-dizin-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-deger-uzmanlik-dizin-bas { max-width: 760px; }
+  .modulex-deger-uzmanlik-dizin-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-deger-uzmanlik-dizin-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-deger-uzmanlik-dizin-dugme:hover { transform: translateY(-2px); }
+  .modulex-deger-uzmanlik-dizin-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-deger-uzmanlik-dizin-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-deger-uzmanlik-dizin-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-deger-uzmanlik-dizin-duzen { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+  .modulex-deger-uzmanlik-dizin:not(.modulex-deger-uzmanlik-dizin--js) .modulex-deger-uzmanlik-dizin-duzen { grid-template-columns: minmax(0, 1fr); }
+  .modulex-deger-uzmanlik-dizin:not(.modulex-deger-uzmanlik-dizin--js) .modulex-deger-uzmanlik-dizin-pano { display: none; }
+  .modulex-deger-uzmanlik-dizin-dizin { display: grid; border-block-start: 2px solid --text--; }
+  .modulex-deger-uzmanlik-dizin-madde { border-block-end: 1px solid --cizgi--; }
+  .modulex-deger-uzmanlik-dizin-tetik { display: flex; align-items: baseline; gap: 14px; width: 100%; padding: 18px 4px; border: 0; background: transparent; color: --text--; font: inherit; text-align: start; transition: color 0.25s ease, padding 0.3s ease; }
+  .modulex-deger-uzmanlik-dizin-no { flex: none; color: --muted--; font-family: var(--mx-font-mono, ui-monospace, monospace); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .modulex-deger-uzmanlik-dizin-ad { font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: clamp(1.15rem, 1.8vw, 1.45rem); font-weight: 650; line-height: 1.3; }
+  .modulex-deger-uzmanlik-dizin-nokta { flex: 1; min-width: 24px; border-block-end: 2px dotted --cizgi--; transform: translateY(-4px); }
+  .modulex-deger-uzmanlik-dizin-ok { flex: none; align-self: center; color: --muted--; font-size: 22px; transition: translate 0.3s ease, color 0.3s ease; }
+  .modulex-deger-uzmanlik-dizin-tetik:hover, .modulex-deger-uzmanlik-dizin--etkin .modulex-deger-uzmanlik-dizin-tetik { color: --accentInk--; padding-inline-start: 14px; }
+  .modulex-deger-uzmanlik-dizin-tetik:hover .modulex-deger-uzmanlik-dizin-ok, .modulex-deger-uzmanlik-dizin--etkin .modulex-deger-uzmanlik-dizin-ok { color: --accentInk--; translate: 4px 0; }
+  [dir="rtl"] .modulex-deger-uzmanlik-dizin-tetik:hover .modulex-deger-uzmanlik-dizin-ok, [dir="rtl"] .modulex-deger-uzmanlik-dizin--etkin .modulex-deger-uzmanlik-dizin-ok { translate: -4px 0; }
+  .modulex-deger-uzmanlik-dizin-detay { display: grid; gap: 12px; padding-block-end: 22px; padding-inline-start: 46px; }
+  .modulex-deger-uzmanlik-dizin--js .modulex-deger-uzmanlik-dizin-madde .modulex-deger-uzmanlik-dizin-detay { display: none; }
+  .modulex-deger-uzmanlik-dizin-madde .modulex-deger-uzmanlik-dizin-kbaslik, .modulex-deger-uzmanlik-dizin-madde .modulex-deger-uzmanlik-dizin-ikon { display: none; }
+  .modulex-deger-uzmanlik-dizin-pano { position: sticky; inset-block-start: 96px; min-height: 280px; padding: clamp(26px, 3.5vw, 44px); border: 1px solid --cizgi--; border-inline-start: 4px solid --accent--; border-start-end-radius: --yuvarlak--; border-end-end-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-deger-uzmanlik-dizin-sekme { position: absolute; inset-block-start: -15px; inset-inline-start: 28px; width: 104px; height: 15px; border: 1px solid --cizgi--; border-block-end: 0; border-start-start-radius: 8px; border-start-end-radius: 8px; background: --kartBg--; }
+  .modulex-deger-uzmanlik-dizin-pano .modulex-deger-uzmanlik-dizin-detay { padding: 0; animation: modulex-deger-uzmanlik-dizin-gel 0.45s ease both; }
+  .modulex-deger-uzmanlik-dizin-pano .modulex-deger-uzmanlik-dizin-ikon { display: inline-grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: --vurguBg--; color: --vurguText--; font-size: 30px; }
+  .modulex-deger-uzmanlik-dizin-pano .modulex-deger-uzmanlik-dizin-kbaslik { font-family: var(--mx-font-serif, var(--mx-font-heading, serif)); font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 700; line-height: 1.2; }
+  .modulex-deger-uzmanlik-dizin-etiket { color: --accentInk--; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-deger-uzmanlik-dizin-kmetin { color: --muted--; line-height: 1.75; }
+  .modulex-deger-uzmanlik-dizin-devam { display: inline-flex; align-items: center; gap: 6px; width: fit-content; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.25s ease; }
+  .modulex-deger-uzmanlik-dizin-devam:hover { gap: 10px; }
+  @keyframes modulex-deger-uzmanlik-dizin-gel { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 768px) {
+    .modulex-deger-uzmanlik-dizin-duzen { grid-template-columns: minmax(0, 1fr); }
+    .modulex-deger-uzmanlik-dizin--js .modulex-deger-uzmanlik-dizin-pano { display: none; }
+    .modulex-deger-uzmanlik-dizin--js .modulex-deger-uzmanlik-dizin-madde.modulex-deger-uzmanlik-dizin--etkin .modulex-deger-uzmanlik-dizin-detay { display: grid; }
+    .modulex-deger-uzmanlik-dizin-detay { padding-inline-start: 0; }
+  }
+  .modulex-deger-uzmanlik-dizin-bag { color: inherit; text-decoration: none; }
+  .modulex-deger-uzmanlik-dizin-bag::after { content: ""; position: absolute; inset: 0; z-index: 3; }
+  .modulex-deger-uzmanlik-dizin-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-uzmanlik-dizin :is(.modulex-deger-uzmanlik-dizin-baslik, .modulex-deger-uzmanlik-dizin-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-deger-uzmanlik-dizin-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-deger-uzmanlik-dizin { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-deger-uzmanlik-dizin *, .modulex-deger-uzmanlik-dizin *::before, .modulex-deger-uzmanlik-dizin *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-deger-uzmanlik-dizin";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const onizle = (s, P) => {
+        const pano = s.querySelector("[data-pano]");
+        const m = [...s.querySelectorAll("[data-onizle]")];
+        if (!pano || !m.length) return;
+        s.classList.add(P + "--js");
+        let son = null;
+        const sec = (li) => {
+          if (li === son) return;
+          son = li;
+          m.forEach((x) => {
+            const b = x.querySelector("button");
+            if (b) b.setAttribute("aria-pressed", String(x === li));
+            x.classList.toggle(P + "--etkin", x === li);
+          });
+          const d = li.querySelector("." + P + "-detay");
+          if (!d) return;
+          const k = d.cloneNode(true);
+          k.querySelectorAll("[id]").forEach((e) => e.removeAttribute("id"));
+          pano.replaceChildren(k);
+        };
+        m.forEach((li) => {
+          const b = li.querySelector("button");
+          if (!b) return;
+          ["click", "focus", "mouseenter"].forEach((t) => b.addEventListener(t, () => sec(li)));
+        });
+        sec(m[0]);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      onizle(s, P, az);
+    });
+  })();
+</script>

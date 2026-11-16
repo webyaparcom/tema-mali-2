@@ -1,0 +1,76 @@
+{
+  "name": "Footer 7",
+  "desing": {
+    "showlang": true,
+    "color": "#1e3046",
+    "logo": "logo.png",
+    "modern_design": true,
+    "centered_logo": true,
+    "newsletter": true,
+    "social_media": true,
+    "split_layout": true,
+    "storeTitle": {
+      "tr": "MAĞAZA",
+      "en": "STORE"
+    },
+    "storelinks": {
+      "tr": "New York|#|London|#|Paris|#",
+      "en": "New York|#|London|#|Paris|#"
+    },
+    "helpTitle": {
+      "tr": "YARDIM",
+      "en": "HELP"
+    },
+    "helplinks": {
+      "tr": "İade Politikası|#|Kargo Bilgisi|#",
+      "en": "Return Policy|#|Shipping Info|#"
+    },
+    "aboutTitle": {
+      "tr": "HAKKIMIZDA",
+      "en": "ABOUT US"
+    },
+    "aboutlinks": {
+      "tr": "KVKK|#|Hakkımızda|#",
+      "en": "Privacy|#|About Us|#"
+    },
+    "accountTitle": {
+      "tr": "HESABIM",
+      "en": "MY ACCOUNT"
+    },
+    "accountlinks": {
+      "tr": "Giriş Yap|/tr/login/|Sepetim|/tr/sepet/",
+      "en": "Log In|/en/login/|My Cart|/en/sepet/"
+    },
+    "contactLabel": {
+      "tr": "Bize Ulaşın:",
+      "en": "Contact Us:"
+    },
+    "phone": "+90 000 000 00 00",
+    "phoneRaw": "+900000000000",
+    "newsletterLabel": {
+      "tr": "Bültenimize Kayıt Olun:",
+      "en": "Subscribe to Our Newsletter:"
+    },
+    "emailPlaceholder": {
+      "tr": "E-posta Adresiniz...",
+      "en": "Your e-mail address..."
+    },
+    "subscribeBtn": {
+      "tr": "Kayıt Ol",
+      "en": "Subscribe"
+    },
+    "rightsText": {
+      "tr": "Tüm Hakları Saklıdır.",
+      "en": "All Rights Reserved."
+    },
+    "madeByHtml": ""
+  },
+  "category": "footer",
+  "data": [],
+  "description": "Web sitesi alt bilgi (footer) bölümü. Logo, telif hakları, iletişim bilgileri ve sosyal medya linklerini içerir. Tüm sayfa türlerinde kullanılabilir evrensel modüldür.",
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}

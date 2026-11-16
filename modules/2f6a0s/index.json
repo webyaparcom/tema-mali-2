@@ -1,0 +1,53 @@
+{
+  "name": "Sayaç Yaprak Takvim — koparılan takvim yaprakları + ajanda",
+  "description": "Her rakam bir duvar takvimi yaprağı: üstte vurgu şeridinde etiket, ortada dev serif rakam, altta sıra (01 / 04). JS ile yapraklar üst üste yığılır; önceki/sonraki ya da yandaki ajanda listesiyle yaprak koparılır (düşme hareketi), ok tuşlarıyla gezilir. JS yoksa yapraklar ızgara. sayac-sekmeli tek paneli sekme şeridiyle, sayac-yigin dağınık yelpazeyi hover ile açar; bu modül sayfaları gerçek bir yığın olarak tutar ve tek tek koparır (cilt halkası + delikli yaprak iskeleti, ajanda dizini) — mali müşavir «vergi takvimi» dili. Sayılar sayfa diliyle biçimlenir (Intl), metinler dil sözlüğü, renkler desing + var(--mx-site-*), mantıksal CSS → RTL. Veri yoksa blok basılmaz.",
+  "version": "1.0.0",
+  "icon": "event_note",
+  "category": "stats",
+  "subCategory": "tear-calendar",
+  "tags": [
+    "stats",
+    "calendar",
+    "stack",
+    "pager",
+    "interactive",
+    "rtl",
+    "fabrika"
+  ],
+  "desing": {
+    "max": "1200px",
+    "bosluk": "clamp(56px, 8vw, 104px)",
+    "yuvarlak": "18px",
+    "ust": "",
+    "baslik": "",
+    "metin": "",
+    "bg": "var(--mx-site-bg, #ffffff)",
+    "text": "var(--mx-site-text, #111318)",
+    "muted": "color-mix(in srgb, var(--mx-site-text, #111318) 68%, var(--mx-site-bg, #ffffff))",
+    "kartBg": "var(--mx-site-surface, #f6f7f9)",
+    "cizgi": "color-mix(in srgb, var(--mx-site-text, #111318) 12%, transparent)",
+    "accent": "var(--mx-site-primary, #2563eb)",
+    "accentInk": "color-mix(in srgb, var(--mx-site-primary, #2563eb) 70%, var(--mx-site-text, #111318))",
+    "accentText": "var(--mx-site-primary-contrast, #ffffff)",
+    "vurguBg": "var(--mx-site-primary, #2563eb)",
+    "vurguText": "var(--mx-site-primary-contrast, #ffffff)",
+    "bgcolor": "var(--mx-site-bg, #ffffff)",
+    "color": "var(--mx-site-text, #111318)"
+  },
+  "data": [],
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "data",
+    "alanlar": {
+      "sayi": "sayı (zorunlu; 1200 · \"4.9\")",
+      "onek": "önek (dil sözlüğü; ör. «%»)",
+      "sonek": "sonek (dil sözlüğü; ör. «+», «/5»)",
+      "etiket": "etiket (dil sözlüğü, zorunlu)",
+      "metin": "kısa not (dil sözlüğü)",
+      "ikon": "Material Symbols adı",
+      "ondalik": "ondalık basamak (yoksa sayıdan)",
+      "max": "oran tavanı (halka/çubuk/dolgu; yoksa % → 100, değilse listedeki en büyük)"
+    }
+  }
+}

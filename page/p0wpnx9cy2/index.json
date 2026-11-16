@@ -1,0 +1,39 @@
+{
+  "id": "p0wpnx9cy2",
+  "name": {
+    "tr": "Teklif iste",
+    "en": "Request a quote",
+    "ar": "اطلب عرضًا"
+  },
+  "description": {
+    "tr": "Üç adımlı teklif sihirbazı (demo).",
+    "en": "Three-step quote wizard (demo).",
+    "ar": "معالج العرض في ثلاث خطوات (تجريبي)."
+  },
+  "keyword": {
+    "tr": "teklif",
+    "en": "quote",
+    "ar": "عرض سعر"
+  },
+  "path": "teklif-al",
+  "icon": "request_quote",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "q9phgb"
+    ],
+    "footer": []
+  },
+  "index": 4,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Teklif iste",
+    "en": "Request a quote",
+    "ar": "اطلب عرضًا"
+  },
+  "date": "2026-11-16T12:10:12.645Z",
+  "update": "2026-11-16T12:20:48.392Z"
+}

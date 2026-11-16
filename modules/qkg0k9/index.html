@@ -1,0 +1,198 @@
+<section class="modulex-iletisim-gizli-gorusme{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-iletisim-gizli-gorusme-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* iletisim-gizli-gorusme — iletisim-bolunmus-form / iletisim-koyu-form konuyu açılır listeyle sorar; bu modülde konu seçimi ilk adım: çip grubu (aria-pressed) select[name=topic]'i sürer, liste JS'le gizlenir. Kanallar kart değil, mühür panelinde dl künye. */
+  .modulex-iletisim-gizli-gorusme { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-iletisim-gizli-gorusme *, .modulex-iletisim-gizli-gorusme *::before, .modulex-iletisim-gizli-gorusme *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-iletisim-gizli-gorusme :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-iletisim-gizli-gorusme :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-iletisim-gizli-gorusme :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-iletisim-gizli-gorusme :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-iletisim-gizli-gorusme img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-iletisim-gizli-gorusme) img { height: auto; }
+  .modulex-iletisim-gizli-gorusme [hidden] { display: none !important; }
+  .modulex-iletisim-gizli-gorusme :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-iletisim-gizli-gorusme :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-iletisim-gizli-gorusme-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-iletisim-gizli-gorusme-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-iletisim-gizli-gorusme--bassiz .modulex-iletisim-gizli-gorusme-bas { display: none; }
+  .modulex-iletisim-gizli-gorusme-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-iletisim-gizli-gorusme-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-iletisim-gizli-gorusme-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-iletisim-gizli-gorusme-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-iletisim-gizli-gorusme-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-iletisim-gizli-gorusme-dugme:hover { transform: translateY(-2px); }
+  .modulex-iletisim-gizli-gorusme-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-iletisim-gizli-gorusme-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-iletisim-gizli-gorusme-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-iletisim-gizli-gorusme-dosya { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr); align-items: stretch; overflow: hidden; border: 1px solid --cizgi--; border-radius: --yuvarlak--; background: --kartBg--; box-shadow: 0 36px 70px -48px color-mix(in srgb, --text-- 60%, transparent); }
+  .modulex-iletisim-gizli-gorusme-dosya--tek { grid-template-columns: minmax(0, 1fr); }
+  .modulex-iletisim-gizli-gorusme-muhur { position: relative; display: grid; align-content: start; gap: 16px; padding: clamp(26px, 4vw, 48px); background: --text--; color: --bg--; }
+  .modulex-iletisim-gizli-gorusme-muhur::after { content: ""; position: absolute; inset-block-end: -60px; inset-inline-end: -60px; width: 220px; height: 220px; border: 18px solid color-mix(in srgb, --bg-- 7%, transparent); border-radius: 50%; pointer-events: none; transition: transform 0.6s ease; }
+  .modulex-iletisim-gizli-gorusme-muhur:hover::after { transform: scale(1.06) rotate(8deg); }
+  .modulex-iletisim-gizli-gorusme-kilit { display: inline-grid; place-items: center; width: 56px; height: 56px; border: 2px solid color-mix(in srgb, --bg-- 40%, transparent); border-radius: 50%; }
+  .modulex-iletisim-gizli-gorusme-kilit .material-symbols-outlined { font-size: 28px; }
+  .modulex-iletisim-gizli-gorusme-muhur .modulex-iletisim-gizli-gorusme-ust { color: color-mix(in srgb, --bg-- 82%, --text--); }
+  .modulex-iletisim-gizli-gorusme-muhur .modulex-iletisim-gizli-gorusme-metin { color: color-mix(in srgb, --bg-- 84%, --text--); }
+  .modulex-iletisim-gizli-gorusme-giz { display: flex; gap: 10px; align-items: flex-start; padding: 14px 16px; border-inline-start: 3px solid color-mix(in srgb, --bg-- 70%, transparent); background: color-mix(in srgb, --bg-- 8%, transparent); font-size: 0.95rem; }
+  .modulex-iletisim-gizli-gorusme-gizik { flex: none; font-size: 22px; }
+  .modulex-iletisim-gizli-gorusme-kunye { display: grid; margin: 4px 0 0; border-block-start: 1px solid color-mix(in srgb, --bg-- 22%, transparent); }
+  .modulex-iletisim-gizli-gorusme-ksat { display: grid; grid-template-columns: minmax(96px, 0.5fr) minmax(0, 1fr); gap: 12px; padding-block: 12px; border-block-end: 1px solid color-mix(in srgb, --bg-- 22%, transparent); }
+  .modulex-iletisim-gizli-gorusme-ksat dt { color: color-mix(in srgb, --bg-- 78%, --text--); font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-gizli-gorusme-ksat dd { margin: 0; min-width: 0; }
+  .modulex-iletisim-gizli-gorusme-muhur .modulex-iletisim-gizli-gorusme-deger { color: --bg--; }
+  .modulex-iletisim-gizli-gorusme-muhur a.modulex-iletisim-gizli-gorusme-deger:hover { color: --bg--; }
+  .modulex-iletisim-gizli-gorusme-muhur .modulex-iletisim-gizli-gorusme-sbaslik { color: color-mix(in srgb, --bg-- 80%, --text--); }
+  .modulex-iletisim-gizli-gorusme-muhur .modulex-iletisim-gizli-gorusme-cip { border-color: color-mix(in srgb, --bg-- 30%, transparent); }
+  .modulex-iletisim-gizli-gorusme-yaz { display: grid; align-content: start; gap: 22px; padding: clamp(24px, 4vw, 48px); }
+  .modulex-iletisim-gizli-gorusme-konular { display: grid; gap: 10px; }
+  .modulex-iletisim-gizli-gorusme:not(.modulex-iletisim-gizli-gorusme--cjs) .modulex-iletisim-gizli-gorusme-konular { display: none; }
+  .modulex-iletisim-gizli-gorusme--cjs .modulex-iletisim-gizli-gorusme-alan:has(> .modulex-iletisim-gizli-gorusme-secim) { display: none; }
+  .modulex-iletisim-gizli-gorusme-kbas { font-size: 0.9rem; font-weight: 700; }
+  .modulex-iletisim-gizli-gorusme-cipler { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-iletisim-gizli-gorusme-kcip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 16px; border: 1.5px solid --cizgi--; border-radius: 10px; background: --bg--; color: --text--; font: inherit; font-weight: 650; transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-gizli-gorusme-kcip .material-symbols-outlined { font-size: 18px; color: --accentInk--; transition: color 0.2s ease; }
+  .modulex-iletisim-gizli-gorusme-kcip:hover { border-color: --accent--; transform: translateY(-1px); }
+  .modulex-iletisim-gizli-gorusme-kcip[aria-pressed="true"] { border-color: --accent--; background: --accent--; color: --accentText--; }
+  .modulex-iletisim-gizli-gorusme-kcip[aria-pressed="true"] .material-symbols-outlined { color: inherit; }
+  @media (max-width: 1024px) {
+    .modulex-iletisim-gizli-gorusme-dosya { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .modulex-iletisim-gizli-gorusme-ksat { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  }
+  .modulex-iletisim-gizli-gorusme-kikon { flex: none; display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: color-mix(in srgb, --accent-- 14%, transparent); color: --accentInk--; font-size: 24px; }
+  .modulex-iletisim-gizli-gorusme-ketiket { display: block; color: --muted--; font-size: 0.82rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-iletisim-gizli-gorusme-deger { color: inherit; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; transition: color 0.2s ease; }
+  a.modulex-iletisim-gizli-gorusme-deger:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-iletisim-gizli-gorusme-eylem { display: inline-flex; align-items: center; gap: 6px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.2s ease; }
+  .modulex-iletisim-gizli-gorusme-eylem:hover { gap: 10px; }
+  .modulex-iletisim-gizli-gorusme-eylem .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-gizli-gorusme-kopya { display: none; align-items: center; gap: 6px; min-height: 36px; padding: 6px 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: --text--; font: inherit; font-size: 0.85rem; font-weight: 650; transition: border-color 0.2s ease, background 0.2s ease; }
+  .modulex-iletisim-gizli-gorusme--kjs .modulex-iletisim-gizli-gorusme-kopya { display: inline-flex; }
+  .modulex-iletisim-gizli-gorusme-kopya:hover { border-color: --accent--; }
+  .modulex-iletisim-gizli-gorusme-kopya .material-symbols-outlined { font-size: 18px; }
+  .modulex-iletisim-gizli-gorusme--kopyalandi { background: color-mix(in srgb, --accent-- 14%, transparent); }
+  .modulex-iletisim-gizli-gorusme-sosyal { display: grid; gap: 10px; }
+  .modulex-iletisim-gizli-gorusme-sbaslik { color: --muted--; font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-gizli-gorusme-sliste { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-iletisim-gizli-gorusme-cip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border: 1px solid --cizgi--; border-radius: 999px; color: inherit; font-weight: 650; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; }
+  .modulex-iletisim-gizli-gorusme-cip:hover { border-color: --accent--; transform: translateY(-2px); }
+  .modulex-iletisim-gizli-gorusme-cikon { font-size: 18px; }
+  .modulex-iletisim-gizli-gorusme-harita { position: relative; overflow: hidden; min-height: 280px; border-radius: --yuvarlak--; background: --kartBg--; }
+  .modulex-iletisim-gizli-gorusme-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .modulex-iletisim-gizli-gorusme-hdesen { position: absolute; inset: 0; display: grid; place-items: center; background-color: color-mix(in srgb, --accent-- 8%, --kartBg--); background-image: linear-gradient(color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, --text-- 7%, transparent) 1px, transparent 1px), radial-gradient(circle at 30% 40%, color-mix(in srgb, --accent-- 18%, transparent) 0 18%, transparent 19%); background-size: 36px 36px, 36px 36px, 100% 100%; }
+  .modulex-iletisim-gizli-gorusme-pin { color: --accentInk--; font-size: 56px; animation: modulex-iletisim-gizli-gorusme-zipla 2.4s ease-in-out infinite; }
+  @keyframes modulex-iletisim-gizli-gorusme-zipla { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .modulex-iletisim-gizli-gorusme-hyol { position: absolute; inset-block-end: 16px; inset-inline-start: 16px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: --bg--; color: --text--; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px color-mix(in srgb, --text-- 16%, transparent); transition: transform 0.2s ease; }
+  .modulex-iletisim-gizli-gorusme-hyol:hover { transform: translateY(-2px); }
+  .modulex-iletisim-gizli-gorusme-hyol .material-symbols-outlined { font-size: 18px; color: --accentInk--; }
+
+  .modulex-iletisim-gizli-gorusme-form { display: grid; gap: 18px; }
+  .modulex-iletisim-gizli-gorusme-fbaslik { font-size: 1.3rem; font-weight: 750; }
+  .modulex-iletisim-gizli-gorusme-alanlar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .modulex-iletisim-gizli-gorusme-alan { display: flex; flex-direction: column-reverse; gap: 6px; }
+  .modulex-iletisim-gizli-gorusme-alan--genis { grid-column: 1 / -1; }
+  .modulex-iletisim-gizli-gorusme-etiket { font-size: 0.9rem; font-weight: 650; }
+  .modulex-iletisim-gizli-gorusme-girdi { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid color-mix(in srgb, currentColor 26%, transparent); border-radius: 12px; background: color-mix(in srgb, currentColor 4%, transparent); color: inherit; font: inherit; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+  textarea.modulex-iletisim-gizli-gorusme-girdi { min-height: 132px; resize: vertical; }
+  .modulex-iletisim-gizli-gorusme-girdi:focus { outline: none; border-color: --accent--; box-shadow: 0 0 0 3px color-mix(in srgb, --accent-- 28%, transparent); }
+  .modulex-iletisim-gizli-gorusme-secim { cursor: pointer; }
+  .modulex-iletisim-gizli-gorusme-secim option { background: --bg--; color: --text--; }
+  .modulex-iletisim-gizli-gorusme-onay { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; }
+  .modulex-iletisim-gizli-gorusme-onay input { flex: none; width: 20px; height: 20px; margin-block-start: 2px; accent-color: --accent--; cursor: pointer; }
+  .modulex-iletisim-gizli-gorusme-onay a { color: inherit; font-weight: 700; text-underline-offset: 3px; }
+  .modulex-iletisim-gizli-gorusme-gonder { justify-self: start; font: inherit; font-weight: 700; cursor: pointer; }
+  .modulex-iletisim-gizli-gorusme-gonder:disabled { opacity: 0.6; cursor: progress; }
+  .modulex-iletisim-gizli-gorusme-durum { min-height: 1.5em; font-size: 0.95rem; font-weight: 650; }
+  .modulex-iletisim-gizli-gorusme-durum:empty { display: none; }
+  .modulex-iletisim-gizli-gorusme-durum--hata { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .modulex-iletisim-gizli-gorusme-bal { position: absolute; inset-inline-start: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-gizli-gorusme-alanlar { grid-template-columns: minmax(0, 1fr); }
+    .modulex-iletisim-gizli-gorusme-gonder { justify-self: stretch; justify-content: center; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-gizli-gorusme :is(.modulex-iletisim-gizli-gorusme-baslik, .modulex-iletisim-gizli-gorusme-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-iletisim-gizli-gorusme-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-iletisim-gizli-gorusme { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-iletisim-gizli-gorusme *, .modulex-iletisim-gizli-gorusme *::before, .modulex-iletisim-gizli-gorusme *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-iletisim-gizli-gorusme";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const konuCip = (s, P) => {
+        const cip = [...s.querySelectorAll("[data-konu-cip]")];
+        const sec = s.querySelector("select[name=topic]");
+        if (!cip.length || !sec) return;
+        s.classList.add(P + "--cjs");
+        const yansit = () => {
+          const t = sec.selectedIndex > 0 ? sec.options[sec.selectedIndex].text.trim() : "";
+          cip.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.konuCip === t)));
+        };
+        cip.forEach((c) => c.addEventListener("click", () => {
+          const i = [...sec.options].findIndex((o) => o.text.trim() === c.dataset.konuCip);
+          sec.selectedIndex = c.getAttribute("aria-pressed") === "true" ? 0 : Math.max(0, i);
+          sec.dispatchEvent(new Event("change", { bubbles: true }));
+          yansit();
+        }));
+        sec.addEventListener("change", yansit);
+        const f = sec.form;
+        if (f) f.addEventListener("reset", () => setTimeout(yansit, 0));
+        yansit();
+      };
+    const form = (s, P) => {
+        s.querySelectorAll("form[data-fb-form]").forEach((f) => {
+          const durum = f.querySelector("[role=status]");
+          const yaz = (m, hata) => { if (durum) { durum.textContent = m || ""; durum.classList.toggle(P + "-durum--hata", !!hata); } };
+          let t0 = Date.now();
+          const al = (ad) => { const e = f.elements.namedItem(ad); return e && "value" in e ? String(e.value).trim() : ""; };
+          const etiket = (ad) => { const e = f.elements.namedItem(ad); const l = e && e.id ? f.querySelector(`label[for="${e.id}"]`) : null; return l ? l.textContent.trim() : ad; };
+          const konuMetin = () => { const e = f.elements.namedItem("topic"); return e && e.selectedIndex > 0 ? e.options[e.selectedIndex].text.trim() : ""; };
+          f.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (!f.checkValidity()) { f.reportValidity(); return; }
+            if (al("website")) return;
+            const govde = ["name", "email", "phone"].filter(al).map((k) => `${etiket(k)}: ${al(k)}`)
+              .concat(konuMetin() ? [`${etiket("topic")}: ${konuMetin()}`] : [], al("message") ? ["", al("message")] : []).join("\n");
+            const d = f.dataset;
+            if (d.action) {
+              const b = f.querySelector("[type=submit]");
+              if (b) b.disabled = true;
+              const yuk = { name: al("name"), email: al("email"), phone: al("phone"), topic: konuMetin(), message: al("message"), kvkk: true, lang: document.documentElement.lang || "", page: location.pathname, website: al("website"), t: Date.now() - t0 };
+              fetch(d.action, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(yuk) })
+                .then((r) => r.json().catch(() => ({})).then((j) => r.ok && j && j.ok !== false))
+                .then((ok) => { if (b) b.disabled = false; yaz(ok ? d.ok : d.hata, !ok); if (ok) { f.reset(); t0 = Date.now(); } })
+                .catch(() => { if (b) b.disabled = false; yaz(d.hata, true); });
+              return;
+            }
+            if (d.gonderim === "whatsapp" && d.wa) { window.open(`https://wa.me/${d.wa}?text=${encodeURIComponent(govde)}`, "_blank", "noopener"); return; }
+            if (d.eposta) {
+              const konu = [d.konu || "", konuMetin()].filter(Boolean).join(" - ");
+              location.href = `mailto:${d.eposta}?subject=${encodeURIComponent(konu)}&body=${encodeURIComponent(govde.replace(/\n/g, "\r\n"))}`;
+            }
+          });
+        });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      konuCip(s, P, az);
+      form(s, P, az);
+    });
+  })();
+</script>

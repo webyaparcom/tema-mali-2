@@ -1,0 +1,315 @@
+<footer class="modulex-footer-v3">
+  <div class="modulex-footer-wrapper">
+    <!-- Üst Menü Kolonları -->
+    <div class="modulex-footer-columns">
+      <div class="modulex-footer-col">
+        <h4>{{storeTitle}}</h4>
+        <ul>
+          {{storelinks}}
+        </ul>
+      </div>
+
+      <div class="modulex-footer-col">
+        <h4>{{helpTitle}}</h4>
+        <ul>
+          {{helplinks}}
+        </ul>
+      </div>
+
+      <div class="modulex-footer-divider"></div>
+
+      <div class="modulex-footer-center">
+        <div class="modulex-footer-logo-area">
+          <img
+            src="/img/{{logo}}"
+            alt="{{web-name}}"
+            class="modulex-footer-logo"
+          />
+          <div class="modulex-footer-contact-box">
+            <span class="modulex-footer-phone-icon material-symbols-outlined"
+              >deskphone</span
+            >
+            <div class="modulex-footer-contact-texts">
+              <p class="modulex-footer-help-label">{{contactLabel}}</p>
+              <a href="tel:{{phoneRaw}}"
+                ><p class="modulex-footer-phone">{{phone}}</p></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modulex-footer-divider"></div>
+
+      <div class="modulex-footer-col">
+        <h4>{{aboutTitle}}</h4>
+        <ul>
+          {{aboutlinks}}
+        </ul>
+      </div>
+
+      <div class="modulex-footer-col">
+        <h4>{{accountTitle}}</h4>
+        <ul>
+          {{accountlinks}}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Newsletter & Sosyal -->
+    <div class="modulex-footer-bottom-row">
+      <div class="modulex-footer-newsletter-inline">
+        <label for="newsletter">{{newsletterLabel}}</label>
+        <input
+          type="email"
+          id="newsletter"
+          placeholder="{{emailPlaceholder}}"
+        />
+        <button>{{subscribeBtn}}</button>
+      </div>
+
+      <div class="modulex-footer-social-icons-inline">
+        <a href="https://facebook.com" target="_blank">
+          <img src="/img/y6fgl7/facebook.png" alt="Facebook" />
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img src="/img/y6fgl7/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <img src="/img/y6fgl7/twitter.png" alt="Twitter" />
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+          <img src="/img/y6fgl7/linkedin.png" alt="LinkedIn" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Alt Bilgi -->
+    <div class="modulex-footer-copyright-bar">
+      <p class="modulex-footer-left">
+        Copyright © {{year}} <strong>{{web-name}}</strong>. {{rightsText}}
+      </p>
+      <p class="modulex-footer-right">
+        {{langbar}}
+        {{madeByHtml}}
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .modulex-footer-v3 {
+    background: #fff;
+    font-family: var(--mx-font-sans, Rubik, sans-serif);
+    color: #333;
+    border-top: 1px solid #eee;
+    padding: 40px 20px 20px;
+    text-align: center;
+  }
+
+  .modulex-footer-wrapper {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .modulex-footer-columns {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .modulex-footer-col {
+    text-align: left;
+    min-width: 120px;
+  }
+
+  .modulex-footer-col h4 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .modulex-footer-col ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+
+  .modulex-footer-col ul li {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.8;
+  }
+
+  .modulex-footer-divider {
+    height: 200px;
+    width: 1px;
+    background: #eee;
+  }
+
+  .modulex-footer-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .modulex-footer-logo-area {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .modulex-footer-logo {
+    max-height: 80px;
+    margin-bottom: 6px;
+  }
+
+  /* SVG logo korumasi (2026-09-13, P5): intrinsic boyutu OLMAYAN bir SVG
+     (yalniz viewBox) flex icinde 0'a coker ve logo GORUNMEZ. max-height
+     yetmez -- ust sinirdir, olcu vermez. Bu varyant (mobil/ikincil logo)
+     ilk P0 taramasinda KACIRILDI -- dosya basina yalniz ilk logo sinifi
+     aranmisti. */
+  .modulex-footer-logo[src*=".svg"] {
+    height: 80px;
+    width: auto;
+  }
+
+  .modulex-footer-contact-box {
+    background: #fafafa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .modulex-footer-phone-icon {
+    font-size: 35px !important;
+    color: #f07c37;
+  }
+
+  .modulex-footer-contact-texts {
+    text-align: left;
+  }
+
+  .modulex-footer-help-label {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+  }
+
+  .modulex-footer-phone {
+    font-size: 16px;
+    color: #f07c37;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .modulex-footer-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 18px 24px;
+    margin: 32px auto 0 auto;
+    max-width: 1100px;
+    flex-wrap: wrap;
+  }
+
+  .modulex-footer-newsletter-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .modulex-footer-newsletter-inline label {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .modulex-footer-newsletter-inline input {
+    padding: 8px 12px;
+    width: 180px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+
+  .modulex-footer-newsletter-inline button {
+    background: #f07c37;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .modulex-footer-social-icons-inline {
+    display: flex;
+    gap: 10px;
+  }
+
+  .modulex-footer-social-icons-inline a img {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    transition: filter 0.2s;
+  }
+
+  .modulex-footer-social-icons-inline a:hover img {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(77%) saturate(748%)
+      hue-rotate(2deg) brightness(97%) contrast(101%);
+  }
+
+  .modulex-footer-copyright-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 16px auto 0;
+    font-size: 13px;
+    color: #888;
+    padding: 0 12px;
+    flex-wrap: wrap;
+  }
+
+  .modulex-footer-copyright-bar p {
+    margin: 4px 0;
+  }
+
+  @media (max-width: 900px) {
+    .modulex-footer-bottom-row,
+    .modulex-footer-copyright-bar {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+  }
+
+  /* W2: mobil tasma kontrolu */
+  @media (max-width: 768px) {
+    [class*="modulex"] {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  /* W2: erisilebilirlik — animasyon kapatma */
+  @media (prefers-reduced-motion: reduce) {
+    [class*="modulex"],
+    [class*="modulex"] * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

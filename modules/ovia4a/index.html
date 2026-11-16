@@ -1,0 +1,766 @@
+<div class="modulex">
+
+  <div class="modulexbody">
+    <a href="/{{lang}}/"><img src="/img/{{logo}}?v={{random}}" class="modulex-logo" alt="{{web-name}} Logo" loading="lazy" /></a>
+
+
+    <div class="modulexright">
+      <div class="modulexlanguages {{langclass}}">
+        <ul>
+          {{langhtml}}
+        </ul>
+      </div>
+      <div class="modulexcontactlist">{{menucontactlist}}</div>
+    </div>
+
+
+    <button type="button" class="modulex-mobile-toggle" onclick="menu3_toggle()" aria-label="{{menuToggleAria}}" style="cursor: pointer;">
+      <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+    </button>
+  </div>
+  <!-- Mobil: soldan açılan menü (kural 11 Kas 2026: çekmece SOLDA) overlay (app tarzı) -->
+  <div class="modulexmenuoverlay" id="menu-3-overlay" onclick="menu3_toggle()" aria-hidden="true" style="cursor: pointer;"></div>
+  <div class="modulexmenubody" id="menu-3-drawer">
+    <div class="modulexmenu" id="menu-3-root">
+      <!-- Mobilde menü listesi üstte, X sağ üst köşede -->
+      <div class="modulexmenulistbody">
+        <div class="modulexmenulist">{{html}}</div>
+      </div>
+      <!-- Mobilde modulexright içeriği: dil + iletişim (modulexmenulistbody altında) -->
+      <div class="modulexmenudrawer-right">
+        <div class="modulexmenudrawer-languages {{langclass}}">
+          <ul>{{langhtml}}</ul>
+        </div>
+        <div class="modulexmenudrawer-contactlist">{{menucontactlist}}</div>
+      </div>
+      <button type="button" class="modulexmenuclose" onclick="menu3_toggle()" aria-label="{{menuCloseAria}}" style="cursor: pointer;">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+  </div>
+</div>
+<style>
+
+  /* Drawer içi dil+iletişim alanı sadece mobilde görünür */
+  .modulexmenudrawer-right {
+    display: none;
+  }
+
+  .modulexmenulist-menu:hover .dropdown-content-modulex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modulexmenulist-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .modulexmenulist-menu:hover {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    color: #000 !important;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .modulexmenulist-menu:hover>a {
+    color: #000 !important;
+  }
+
+  .modulexmenulist-menu>a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff !important;
+  }
+
+  .dropdown-content-active-modulex {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    color: #000 !important;
+    cursor: pointer;
+  }
+
+  .dropdown-content-active-modulex>a {
+    color: #000 !important;
+  }
+
+  .dropdown-content-modulex {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    z-index: 1000000;
+    margin-top: 10px;
+    padding: 5px;
+  }
+
+  .dropdown-content-modulex>a {
+    width: inherit;
+    padding: 10px;
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    text-align: left;
+    color: #fff;
+  }
+
+  .dropdown-content-modulex>a:hover {
+    background-color: #000;
+  }
+
+  .modulex-logo {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(100%, --logosize--px);
+    max-height: 120px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  /* SVG logo korumasi (2026-09-13): intrinsic boyutu OLMAYAN bir SVG
+     (yalniz viewBox) `height:auto` ile flex icinde 0'a coker ve logo
+     GORUNMEZ. `max-height` yetmez -- ust sinirdir, olcu vermez. */
+  .modulex-logo[src*=".svg"] {
+    height: 60px;
+    width: 300px;
+    object-fit: contain;
+  }
+
+  .modulexbody {
+    width: var(--max);
+    display: flex;
+    align-items: center;
+    margin: 10px 0px 10px 0px;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .modulexbody > a {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    position: relative;
+    gap: 10px;
+    max-width: min(90vw, --logosize--px);
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+
+  .modulexright {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .modulexlanguages {
+    margin: -5px 0px -5px 0px;
+  }
+
+  .modulexlanguages.lang-hidden {
+    display: none;
+  }
+
+  .modulexlanguages ul {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .modulexlanguages li {
+    list-style: none;
+    border: 1px solid #111;
+    padding: 5px;
+    aspect-ratio: 1/1;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #111;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .modulexlanguages li a {
+    color: #fff !important;
+  }
+
+  .modulexlanguages li a:hover {
+    border: 1px solid --color--;
+    color: --color--;
+  }
+
+  .modulexlanguages li:hover {
+    border: 1px solid --color--;
+    color: --color--;
+  }
+
+  .modulexcontactlist {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .modulexcontactlist a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Varsayilan renk; kalem bazli spotcolor/iconcolor back.js inline style ile yazar.
+     --spotcolor--/--iconcolor-- CSS'te birakilmaz: data[] kalem token'i desing'e dusmez,
+     style.css'te cozulmemis placeholder audit hatasi uretir. */
+  .modulex-spot {
+    font-size: 16px;
+    color: #000;
+  }
+
+  .modulex-icon {
+    font-size: 36px !important;
+    color: #000;
+  }
+
+  .modulex {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modulexmenu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: var(--max);
+    position: relative;
+  }
+
+  .modulexmenubody {
+    width: 100%;
+    background-color: --color--;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .modulexmenulist {
+    padding: 10px;
+    background-color: --color--;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .modulexmenulistbody {
+    width: 100%;
+  }
+
+  /* Overlay sadece mobilde kullanılır, masaüstünde gizli */
+  .modulexmenuoverlay {
+    display: none;
+  }
+
+  .modulex-mobile-toggle {
+    display: none;
+    background: --color--;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 12px;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+    .modulex-mobile-toggle span {
+    font-size: 24px;
+  }
+
+  /* Kapatma butonu sadece mobil drawer'da görünsün */
+  .modulexmenuclose {
+    display: none;
+  }
+
+  /* 1024px ve altında mobil düzen (drawer, hamburger, overlay) */
+  @media screen and (max-width: 1024px) {
+    .modulex {
+      position: sticky;
+      top: 0;
+      z-index: 1000000;
+      background-color: #fff;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .modulexmenu {
+      overflow-x: auto;
+    }
+
+    .modulexmenulist {
+      flex-direction: row;
+    }
+
+    .modulex-logo {
+      max-width: min(50vw, --logosizemobil--px);
+      max-height: 90px;
+    }
+
+    .modulexbody > a {
+      max-width: min(50vw, --logosizemobil--px);
+    }
+
+    .modulexbody {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      gap: 10px;
+    }
+
+    /* Mobilde dil+iletişim sadece drawer'da (modulexmenulistbody altında) */
+    .modulexbody .modulexright {
+      display: none;
+    }
+
+    .modulexright {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .modulexcontactlist {
+      display: none;
+    }
+
+    .modulexlanguages.lang-hidden {
+      display: none;
+    }
+
+    .modulexlanguages {
+      display: flex;
+    }
+
+    .modulex-mobile-toggle {
+      display: inline-flex;
+      order: -1; /* mobil uygulama kuralı: hamburger solda, çekmece de soldan açılır */
+      min-width: 48px;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modulex-mobile-toggle:active {
+      opacity: 0.85;
+    }
+
+    /* Mobil app: overlay (backdrop) */
+    .modulexmenuoverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 100dvh;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 9998;
+      opacity: 0;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .modulexmenuoverlay.modulexmenu-open {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Mobil app: SOLDAN kayan drawer (safe-area uyumlu; RTL'de ayna) */
+    .modulexmenubody {
+      position: fixed;
+      top: 0;
+      inset-inline-start: 0;
+      transform: translateX(calc(-100% - 32px));
+      width: 85%;
+      max-width: 320px;
+      height: 100%;
+      min-height: 100dvh;
+      padding-top: env(safe-area-inset-top, 0);
+      padding-inline-start: env(safe-area-inset-left, 0);
+      padding-bottom: env(safe-area-inset-bottom, 0);
+      box-sizing: border-box;
+      background-color: --color--;
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+      z-index: 9999999;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    [dir="rtl"] .modulexmenubody {
+      transform: translateX(calc(100% + 32px));
+    }
+
+    .modulexmenubody.modulexmenu-open,
+    [dir="rtl"] .modulexmenubody.modulexmenu-open {
+      transform: none;
+    }
+
+    .modulexmenubody .modulexmenu {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: none;
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+    }
+
+    /* App tarzı üst bar: kapatma butonu (48px dokunma alanı, safe-area uyumlu) */
+    .modulexmenuclose {
+      display: flex;
+      position: absolute;
+      top: calc(env(safe-area-inset-top, 0) + 4px);
+      right: calc(env(safe-area-inset-right, 0) + 4px);
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      padding: 0;
+      margin: 0;
+      border: none;
+      border-radius: 50%;
+      background-color: transparent;
+      color: #fff;
+      font-size: 24px;
+      z-index: 100;
+    }
+
+    .modulexmenuclose:active {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .modulexmenuclose span {
+      font-size: 24px;
+      color: #fff;
+    }
+
+    /* Menü listesi: app tarzı üstte, kaydırılabilir alan */
+    .modulexmenubody .modulexmenulistbody {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      padding-top: calc(56px + env(safe-area-inset-top, 0));
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 16px;
+      min-height: 0;
+    }
+
+    .modulexmenulist {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      padding: 0;
+      flex: 0 1 auto;
+    }
+
+    /* App tarzı menü satırları: 48px min yükseklik, net ayırıcı */
+    .modulexmenubody .modulexmenulist-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 48px;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0;
+      box-sizing: border-box;
+    }
+
+    .modulexmenubody .modulexmenulist-menu:last-child {
+      border-bottom: none;
+    }
+
+    .modulexmenubody .modulexmenulist-menu:active {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Drawer: modulexright içeriği (dil + iletişim) modulexmenulistbody altında */
+    .modulexmenubody .modulexmenudrawer-right {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      gap: 16px;
+      padding: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .modulexmenudrawer-right .modulexmenudrawer-languages.lang-hidden {
+      display: none;
+    }
+
+    .modulexmenudrawer-right .modulexmenudrawer-languages ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .modulexmenudrawer-right .modulexmenudrawer-languages li {
+      list-style: none;
+      margin: 0;
+    }
+
+    .modulexmenudrawer-right .modulexmenudrawer-languages a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
+      min-height: 48px;
+      padding: 0 10px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .modulexmenudrawer-right .modulexmenudrawer-languages a:active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .modulexmenudrawer-contactlist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .modulexmenudrawer-contactlist a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .modulexmenudrawer-contactlist .modulex-icon {
+      font-size: 24px;
+    }
+
+    .modulexmenudrawer-contactlist .modulex-spot {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .dropdown-content-modulex {
+      position: static;
+      background-color: rgba(0, 0, 0, 0.2);
+      margin-top: 4px;
+      margin-bottom: 8px;
+      padding: 0;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .modulexmenubody .dropdown-content-modulex>a {
+      display: block;
+      min-height: 44px;
+      padding: 12px 16px;
+      border-width: 0 0 1px 0;
+      border-color: rgba(255, 255, 255, 0.08);
+      box-sizing: border-box;
+    }
+
+    .modulexmenubody .dropdown-content-modulex>a:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /* Hareket azaltma tercihi: animasyonları kısalt */
+  @media (prefers-reduced-motion: reduce) {
+    .modulexmenuoverlay,
+    .modulexmenubody {
+      transition: none;
+    }
+  }
+
+  /* 8 Kas 2026: logo gorseli acik zemin icin cizilmis (koyu yazi, saydam); koyu modda koyu header uzerinde kayboluyordu.
+     Koyu modda acik plaka; bilerek acik logolar (logo-acik) haric. */
+  @media (prefers-color-scheme: dark) {
+    .modulex-logo:not([src*="acik"]) {
+      background: #ffffff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      box-sizing: content-box;
+    }
+  }
+</style>
+<script>
+  if (typeof menu3_toggle === "undefined") {
+    function menu3_close() {
+      var root = document.getElementById("menu-3-root");
+      var overlay = document.getElementById("menu-3-overlay");
+      var drawer = document.getElementById("menu-3-drawer");
+      var menuBtn = document.querySelector(".modulex-mobile-toggle");
+      if (!root || !root.classList.contains("modulexmenu-open")) {
+        return;
+      }
+      root.classList.remove("modulexmenu-open");
+      if (overlay) {
+        overlay.classList.remove("modulexmenu-open");
+        overlay.setAttribute("aria-hidden", "true");
+      }
+      if (drawer) {
+        drawer.classList.remove("modulexmenu-open");
+        drawer.style.transform = "";
+      }
+      if (menuBtn) {
+        menuBtn.setAttribute("aria-expanded", "false");
+      }
+      document.body.style.overflow = "";
+    }
+
+    function menu3_toggle() {
+      var root = document.getElementById("menu-3-root");
+      var overlay = document.getElementById("menu-3-overlay");
+      var drawer = document.getElementById("menu-3-drawer");
+      var menuBtn = document.querySelector(".modulex-mobile-toggle");
+      if (!root) {
+        return;
+      }
+      var isOpen = root.classList.contains("modulexmenu-open");
+      if (isOpen) {
+        menu3_close();
+        if (menuBtn) {
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+      } else {
+        root.classList.add("modulexmenu-open");
+        if (overlay) {
+          overlay.classList.add("modulexmenu-open");
+          overlay.setAttribute("aria-hidden", "false");
+        }
+        if (drawer) {
+          drawer.classList.add("modulexmenu-open");
+        }
+        if (menuBtn) {
+          menuBtn.setAttribute("aria-expanded", "true");
+        }
+        document.body.style.overflow = "hidden";
+      }
+    }
+  }
+
+  /* Drawer içinde linke tıklanınca menü kapansın */
+  setTimeout(function() {
+    var drawer = document.getElementById("menu-3-drawer");
+    if (drawer) {
+      drawer.addEventListener("click", function(e) {
+        var link = e.target.closest("a[href]");
+        if (link) {
+          menu3_close();
+        }
+      });
+    }
+  }, 100);
+
+  /* menu-open: soldan açılan çekmece kapanma yönüne (LTR sola, RTL sağa) çekilince (swipe) kapanır */
+  setTimeout(function() {
+    var drawer = document.getElementById("menu-3-drawer");
+    if (!drawer) {
+      return;
+    }
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchDeltaX = 0;
+    var isHorizontalSwipe = false;
+
+    drawer.addEventListener("touchstart", function(e) {
+      var root = document.getElementById("menu-3-root");
+      if (!root || !root.classList.contains("modulexmenu-open")) {
+        return;
+      }
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchDeltaX = 0;
+      isHorizontalSwipe = false;
+      drawer.style.transition = "none";
+    }, { passive: true });
+
+    drawer.addEventListener("touchmove", function(e) {
+      var root = document.getElementById("menu-3-root");
+      if (!root || !root.classList.contains("modulexmenu-open")) {
+        return;
+      }
+      var x = e.touches[0].clientX;
+      var y = e.touches[0].clientY;
+      touchDeltaX = x - touchStartX;
+      var deltaY = Math.abs(y - touchStartY);
+      var yon = document.documentElement.getAttribute("dir") === "rtl" ? 1 : -1;
+      var kapanma = touchDeltaX * yon;
+      if (kapanma > 15 && kapanma > deltaY) {
+        isHorizontalSwipe = true;
+      }
+      if (isHorizontalSwipe && kapanma > 0) {
+        e.preventDefault();
+        drawer.style.transform = "translateX(" + touchDeltaX + "px)";
+      }
+    }, { passive: false });
+
+    drawer.addEventListener("touchend", function() {
+      var root = document.getElementById("menu-3-root");
+      if (!root || !root.classList.contains("modulexmenu-open")) {
+        return;
+      }
+      drawer.style.transition = "";
+      var yonSon = document.documentElement.getAttribute("dir") === "rtl" ? 1 : -1;
+      if (touchDeltaX * yonSon > 80) {
+        menu3_close();
+      } else {
+        drawer.style.transform = "";
+      }
+    }, { passive: true });
+  }, 100);
+</script>

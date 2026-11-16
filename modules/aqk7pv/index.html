@@ -1,0 +1,177 @@
+<footer class="footer">
+  <div class="footer-main-row">
+    <div class="footer-logo">
+      <img
+        src="/img/{{logo}}?v={{random}}"
+        alt="{{web-name}} Logo"
+        class="footer-logo-img"
+        height="60px"
+      />
+    </div>
+    <ul class="menu">
+      {{html}}
+    </ul>
+    <div class="footer-payment-logos">
+      <img
+        src="/img/iyzico.png"
+        alt="iyzico"
+        height="17"
+        style="margin-right: 8px"
+      />
+      <img
+        src="/img/masterpass.png"
+        alt="masterpass"
+        height="17"
+        style="margin-right: 8px"
+      />
+      <img src="/img/visa.png" alt="visa" height="17" />
+    </div>
+  </div>
+  <div class="footer-copyright-bar">
+    {{langbar}}
+    <p class="footer-copyright">
+      Copyright &copy; {{year}} {{web-name}} {{rightsText}}
+    </p>
+  </div>
+</footer>
+<style>
+  .footer {
+    position: relative;
+    background: white;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-main-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--max);
+    margin-bottom: 50px;
+    gap: 0;
+  }
+
+  .footer-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 120px;
+    margin-bottom: 0;
+  }
+
+  .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2 1 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+
+  .footer-payment-logos {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex: 1 1 0;
+    min-width: 120px;
+    margin-bottom: 0;
+    width: auto;
+  }
+
+  .modulex-menu__item {
+    list-style: none;
+  }
+
+  .modulex-menu__link {
+    font-size: 1.2rem;
+    color: #000000 !important;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    text-decoration: none;
+    opacity: 0.75;
+    font-weight: 300;
+  }
+
+  .modulex-menu__link:hover {
+    opacity: 1;
+  }
+
+  .footer-copyright-bar {
+    width: 100vw;
+    background: var(--copyright-bg-color, #f77f00);
+    margin-left: calc(-50vw + 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+  }
+
+  .footer-copyright {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 12px 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 900px) {
+    .footer-main-row {
+      flex-direction: column;
+      gap: 16px;
+      max-width: 100%;
+    }
+
+    .footer-logo,
+    .footer-payment-logos {
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .menu {
+      justify-content: center;
+    }
+  }
+
+  @keyframes modulexFooter4In {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .footer {
+    animation: modulexFooter4In 0.45s ease both;
+  }
+
+  /* W2: mobil tasma kontrolu */
+  @media (max-width: 768px) {
+    [class*="modulex"] {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  /* W2: erisilebilirlik — animasyon kapatma */
+  @media (prefers-reduced-motion: reduce) {
+    [class*="modulex"],
+    [class*="modulex"] * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

@@ -1,0 +1,163 @@
+<section class="modulex-sayac-yaprak-takvim{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-sayac-yaprak-takvim-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* sayac-yaprak-takvim — sayac-sekmeli tek paneli sekme şeridiyle, sayac-yigin dağınık yelpazeyi hover ile açar; bu modül sayfaları gerçek bir yığın olarak tutar ve tek tek koparır (cilt halkası + delikli yaprak iskeleti, ajanda dizini) — mali müşavir «vergi takvimi» dili. */
+  .modulex-sayac-yaprak-takvim { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-sayac-yaprak-takvim *, .modulex-sayac-yaprak-takvim *::before, .modulex-sayac-yaprak-takvim *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-sayac-yaprak-takvim :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-sayac-yaprak-takvim :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-sayac-yaprak-takvim :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-sayac-yaprak-takvim :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-sayac-yaprak-takvim img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-sayac-yaprak-takvim) img { height: auto; }
+  .modulex-sayac-yaprak-takvim [hidden] { display: none !important; }
+  .modulex-sayac-yaprak-takvim :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-sayac-yaprak-takvim :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-sayac-yaprak-takvim-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-sayac-yaprak-takvim-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-sayac-yaprak-takvim--bassiz .modulex-sayac-yaprak-takvim-bas { display: none; }
+  .modulex-sayac-yaprak-takvim-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-sayac-yaprak-takvim-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-sayac-yaprak-takvim-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-sayac-yaprak-takvim-bas { max-width: 760px; }
+  .modulex-sayac-yaprak-takvim-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-sayac-yaprak-takvim-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-sayac-yaprak-takvim-dugme:hover { transform: translateY(-2px); }
+  .modulex-sayac-yaprak-takvim-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-sayac-yaprak-takvim-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-sayac-yaprak-takvim-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-sayac-yaprak-takvim-duzen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+  .modulex-sayac-yaprak-takvim:not(.modulex-sayac-yaprak-takvim--yjs) .modulex-sayac-yaprak-takvim-duzen { grid-template-columns: minmax(0, 1fr); }
+  .modulex-sayac-yaprak-takvim-blok { position: relative; display: grid; width: 100%; max-width: 440px; justify-self: center; }
+  .modulex-sayac-yaprak-takvim:not(.modulex-sayac-yaprak-takvim--yjs) .modulex-sayac-yaprak-takvim-blok { max-width: none; }
+  .modulex-sayac-yaprak-takvim-yapraklar { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 18px; }
+  .modulex-sayac-yaprak-takvim-yaprak { position: relative; display: grid; align-content: start; justify-items: center; gap: 8px; min-height: 290px; padding: 0 22px 20px; overflow: hidden; border: 1px solid --cizgi--; border-radius: --yuvarlak--; background: --kartBg--; text-align: center; box-shadow: 0 18px 30px -24px color-mix(in srgb, --text-- 55%, transparent); transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease; }
+  .modulex-sayac-yaprak-takvim-ay { position: relative; display: flex; align-items: center; justify-content: center; gap: 8px; width: calc(100% + 44px); margin-inline: -22px; margin-block-end: 18px; padding: 26px 18px 14px; background: --vurguBg--; color: --vurguText--; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.3; text-transform: uppercase; }
+  .modulex-sayac-yaprak-takvim-ay::before { content: ""; position: absolute; inset-block-start: 6px; inset-inline: 0; height: 8px; background: radial-gradient(circle, --bg-- 3px, transparent 3.5px) 50% 50% / 18px 8px repeat-x; }
+  .modulex-sayac-yaprak-takvim-ikon { font-size: 20px; }
+  .modulex-sayac-yaprak-takvim-gun .modulex-sayac-yaprak-takvim-sayi { display: block; font-family: var(--mx-font-heading, Georgia, serif); font-size: clamp(3.2rem, 6.5vw, 5rem); font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; line-height: 1; }
+  .modulex-sayac-yaprak-takvim-ek { color: --accentInk--; font-size: 0.42em; }
+  .modulex-sayac-yaprak-takvim-not { max-width: 28ch; color: --muted--; font-size: 0.95rem; }
+  .modulex-sayac-yaprak-takvim-sira { margin-block-start: auto; padding-block-start: 14px; color: --muted--; font-family: var(--mx-font-mono, ui-monospace, monospace); font-size: 0.8rem; letter-spacing: 0.1em; }
+  .modulex-sayac-yaprak-takvim-cilt { display: none; }
+  .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-cilt { position: absolute; inset-block-start: -14px; inset-inline: 22%; z-index: 50; display: flex; justify-content: space-between; pointer-events: none; }
+  .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-cilt::before, .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-cilt::after { content: ""; width: 14px; height: 30px; border: 3px solid --muted--; border-radius: 8px; background: --bg--; }
+  .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-yapraklar { grid-template-columns: minmax(0, 1fr); gap: 0; padding-block-end: 22px; }
+  .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-yaprak { grid-area: 1 / 1; min-height: 330px; z-index: calc(20 - var(--sira, 0)); transform: translateY(calc(var(--sira, 0) * 9px)) scale(calc(1 - var(--sira, 0) * 0.035)); transform-origin: 50% 100%; }
+  .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-yaprak--arka { opacity: 0; }
+  .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-yaprak.modulex-sayac-yaprak-takvim-yaprak--kopar { z-index: 40; animation: modulex-sayac-yaprak-takvim-kopar 0.7s cubic-bezier(0.5, 0, 0.75, 0) both; }
+  @keyframes modulex-sayac-yaprak-takvim-kopar { from { transform: none; opacity: 1; } to { transform: translateY(80px) rotate(-9deg); opacity: 0; } }
+  .modulex-sayac-yaprak-takvim-denetim { display: flex; align-items: center; justify-content: center; gap: 16px; margin-block-start: 12px; }
+  .modulex-sayac-yaprak-takvim-ok { display: inline-grid; place-items: center; width: 48px; height: 48px; border: 1px solid --cizgi--; border-radius: 50%; background: --kartBg--; color: --text--; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease; }
+  .modulex-sayac-yaprak-takvim-ok:hover { border-color: --accent--; background: --accent--; color: --accentText--; }
+  .modulex-sayac-yaprak-takvim-konum { min-width: 8ch; font-family: var(--mx-font-mono, ui-monospace, monospace); font-variant-numeric: tabular-nums; font-weight: 700; text-align: center; }
+  .modulex-sayac-yaprak-takvim-ajanda { display: grid; border-block-start: 2px solid --text--; }
+  .modulex-sayac-yaprak-takvim-madde { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px; width: 100%; padding: 16px 12px; border: 0; border-block-end: 1px solid --cizgi--; background: transparent; color: --text--; font: inherit; text-align: start; transition: background 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-sayac-yaprak-takvim-madde:hover { background: color-mix(in srgb, --accent-- 6%, transparent); }
+  .modulex-sayac-yaprak-takvim-madde[aria-current="true"] { padding-inline-start: 20px; background: color-mix(in srgb, --accent-- 10%, transparent); box-shadow: inset 4px 0 0 --accent--; }
+  [dir="rtl"] .modulex-sayac-yaprak-takvim-madde[aria-current="true"] { box-shadow: inset -4px 0 0 --accent--; }
+  .modulex-sayac-yaprak-takvim-madde-no { color: --accentInk--; font-family: var(--mx-font-mono, ui-monospace, monospace); font-size: 0.8rem; font-weight: 700; }
+  .modulex-sayac-yaprak-takvim-madde-ad { min-width: 0; font-weight: 600; }
+  .modulex-sayac-yaprak-takvim-madde-sayi { font-weight: 800; font-variant-numeric: tabular-nums; }
+  @media (max-width: 768px) {
+    .modulex-sayac-yaprak-takvim-duzen { grid-template-columns: minmax(0, 1fr); }
+    .modulex-sayac-yaprak-takvim--yjs .modulex-sayac-yaprak-takvim-yaprak { min-height: 280px; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sayac-yaprak-takvim :is(.modulex-sayac-yaprak-takvim-baslik, .modulex-sayac-yaprak-takvim-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sayac-yaprak-takvim-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-sayac-yaprak-takvim { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-sayac-yaprak-takvim *, .modulex-sayac-yaprak-takvim *::before, .modulex-sayac-yaprak-takvim *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-sayac-yaprak-takvim";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const sayac = (s, P, az) => {
+        const el = [...s.querySelectorAll("[data-hedef]")];
+        if (!el.length || az || !("IntersectionObserver" in window)) return;
+        const dl = document.documentElement.lang || undefined;
+        const oynat = () => el.forEach((e) => {
+          const h = Number(e.dataset.hedef);
+          const od = Number(e.dataset.ondalik) || 0;
+          const son = e.textContent;
+          if (!Number.isFinite(h)) return;
+          let f;
+          try { f = new Intl.NumberFormat(dl, { minimumFractionDigits: od, maximumFractionDigits: od }); } catch (x) { return; }
+          const t0 = performance.now();
+          const adim = (t) => {
+            const p = Math.min(1, (t - t0) / 1300);
+            e.textContent = p < 1 ? f.format(h * (1 - Math.pow(1 - p, 3))) : son;
+            if (p < 1) requestAnimationFrame(adim);
+          };
+          requestAnimationFrame(adim);
+        });
+        const io = new IntersectionObserver((gs) => {
+          gs.forEach((g) => { if (g.isIntersecting) { oynat(); io.disconnect(); } });
+        }, { threshold: 0.3 });
+        io.observe(s);
+      };
+    const yaprak = (s, P, az) => {
+        const y = [...s.querySelectorAll("[data-yaprak]")];
+        const d = s.querySelector("[data-yaprak-denetim]");
+        if (y.length < 2 || !d) return;
+        const aj = s.querySelector("[data-yaprak-ajanda]");
+        const sec = [...s.querySelectorAll("[data-yaprak-sec]")];
+        const ok = [...d.querySelectorAll("[data-yaprak-git]")];
+        const konum = d.querySelector("[data-yaprak-no]");
+        const n = y.length;
+        const ad = (j) => { const e = y[j].querySelector("[data-yaprak-ad]"); return e ? e.textContent.trim() : String(j + 1); };
+        const iki = (v) => String(v).padStart(2, "0");
+        let i = 0;
+        s.classList.add(P + "--yjs");
+        d.hidden = false;
+        if (aj) aj.hidden = false;
+        const kur = (yeni, ileri) => {
+          const eski = i;
+          i = (yeni + n) % n;
+          y.forEach((x, j) => {
+            const r = (j - i + n) % n;
+            x.style.setProperty("--sira", String(r));
+            x.classList.toggle(P + "-yaprak--arka", r > 2);
+            x.inert = r !== 0;
+            x.setAttribute("aria-hidden", String(r !== 0));
+          });
+          if (!az && ileri && eski !== i) {
+            const e = y[eski];
+            e.classList.add(P + "-yaprak--kopar");
+            setTimeout(() => e.classList.remove(P + "-yaprak--kopar"), 720);
+          }
+          if (konum) konum.textContent = `${iki(i + 1)} / ${iki(n)}`;
+          ok.forEach((b) => b.setAttribute("aria-label", ad((i + Number(b.dataset.yaprakGit) + n) % n)));
+          sec.forEach((b, j) => { if (j === i) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+        };
+        ok.forEach((b) => b.addEventListener("click", () => { const g = Number(b.dataset.yaprakGit); kur(i + g, g > 0); }));
+        sec.forEach((b, j) => b.addEventListener("click", () => kur(j, j > i)));
+        d.addEventListener("keydown", (e) => {
+          const rtl = getComputedStyle(s).direction === "rtl";
+          if (e.key === (rtl ? "ArrowLeft" : "ArrowRight")) { e.preventDefault(); kur(i + 1, true); }
+          else if (e.key === (rtl ? "ArrowRight" : "ArrowLeft")) { e.preventDefault(); kur(i - 1, false); }
+        });
+        kur(0, false);
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      sayac(s, P, az);
+      yaprak(s, P, az);
+    });
+  })();
+</script>

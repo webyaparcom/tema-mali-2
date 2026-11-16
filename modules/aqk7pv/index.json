@@ -1,0 +1,27 @@
+{
+  "name": "Footer 4",
+  "desing": {
+    "showlang": true,
+    "color": "#1e3046",
+    "logo": "logo.png",
+    "ecommerce_design": true,
+    "ssl_certificate": true,
+    "payment_logos": [
+      "visa",
+      "mastercard",
+      "paypal"
+    ],
+    "rightsText": {
+      "tr": "Tüm Hakları Saklıdır.",
+      "en": "All Rights Reserved."
+    }
+  },
+  "category": "footer",
+  "data": [],
+  "description": "Web sitesi alt bilgi (footer) bölümü. Logo, telif hakları, iletişim bilgileri ve sosyal medya linklerini içerir. Tüm sayfa türlerinde kullanılabilir evrensel modüldür.",
+  "veri": {
+    "statik": true,
+    "dinamik": false,
+    "kaynak": "desing/data"
+  }
+}
