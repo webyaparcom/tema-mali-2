@@ -3,17 +3,23 @@
   "name": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "description": {
     "tr": "Vizyonumuz",
     "en": "Our vision",
-    "ar": "رؤيتنا"
+    "ar": "رؤيتنا",
+    "de": "Unsere Vision",
+    "ru": "Наше видение"
   },
   "keyword": {
     "tr": "Vizyon",
     "en": "vision, our vision, goals",
-    "ar": "الرؤية, رؤيتنا, الأهداف"
+    "ar": "الرؤية, رؤيتنا, الأهداف",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "path": "vizyon",
   "icon": "visibility",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Vizyonumuz</h2>\n<p>Mükellefiyle açık ve yazılı iletişim kuran bir yerel mali müşavirlik ofisi olmak.</p>",
     "en": "<h2>Our vision</h2>\n<p>To be a local accounting office in open, written contact with its clients.</p>",
-    "ar": "<h2>رؤيتنا</h2>\n<p>أن نكون مكتب محاسبة محليًا على تواصل مفتوح ومكتوب مع عملائه.</p>"
+    "ar": "<h2>رؤيتنا</h2>\n<p>أن نكون مكتب محاسبة محليًا على تواصل مفتوح ومكتوب مع عملائه.</p>",
+    "de": "<h2>Unsere Vision</h2>\n<p>Ein lokales Steuerbüro zu sein, das mit seinen Mandanten in offener, schriftlicher Kommunikation steht.</p>",
+    "ru": "<h2>Наша миссия</h2>\n<p>Быть местной бухгалтерской фирмой, поддерживающей открытый письменный контакт с клиентами.</p>"
   },
   "title": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "date": "2026-11-16T12:10:12.479Z",
   "update": "2026-11-16T12:20:48.402Z",

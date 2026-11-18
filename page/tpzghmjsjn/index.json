@@ -3,17 +3,23 @@
   "name": {
     "tr": "Hizmetler",
     "en": "Services",
-    "ar": "الخدمات"
+    "ar": "الخدمات",
+    "de": "Leistungen",
+    "ru": "Услуги"
   },
   "description": {
     "tr": "Muhasebe, beyanname, bordro ve kuruluş hizmetleri.",
     "en": "Bookkeeping, returns, payroll and formation services.",
-    "ar": "خدمات المحاسبة والإقرارات والرواتب والتأسيس."
+    "ar": "خدمات المحاسبة والإقرارات والرواتب والتأسيس.",
+    "de": "Buchhaltung, Steuererklärungen, Gehaltsabrechnung und Gründungsdienstleistungen.",
+    "ru": "Бухгалтерия, налоговая отчетность, расчет заработной платы и услуги по созданию компаний."
   },
   "keyword": {
     "tr": "Hizmet dizini",
     "en": "Service index",
-    "ar": "فهرس الخدمات"
+    "ar": "فهرس الخدمات",
+    "de": "Dienstleistungsverzeichnis",
+    "ru": "Каталог услуг"
   },
   "path": "hizmetler",
   "icon": "work",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Hizmetler",
     "en": "Services",
-    "ar": "الخدمات"
+    "ar": "الخدمات",
+    "de": "Leistungen",
+    "ru": "Услуги"
   },
   "date": "2026-11-16T12:10:12.625Z",
   "update": "2026-11-16T12:20:48.375Z"

@@ -4,12 +4,16 @@
   "description": {
     "tr": "Vade Mali Ofis: muhasebe, beyanname, bordro ve şirket kuruluşu için ön görüşme ve teklif talebi. Demo site; içerik kurgusaldır.",
     "en": "Vade Mali Ofis: initial meetings and quote requests for bookkeeping, tax returns, payroll and company formation. Demo site; content is fictional.",
-    "ar": "فاده للشؤون المالية: لقاءات أولية وطلبات عروض للمحاسبة والإقرارات الضريبية والرواتب وتأسيس الشركات. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "فاده للشؤون المالية: لقاءات أولية وطلبات عروض للمحاسبة والإقرارات الضريبية والرواتب وتأسيس الشركات. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Vade Mali Ofis: Erstgespräche und Angebotsanfragen für Buchhaltung, Steuererklärungen, Gehaltsabrechnung und Firmengründung. Demo-Seite; Inhalte sind fiktiv.",
+    "ru": "Vade Mali Ofis: первичные встречи и запросы предложений по бухгалтерии, налоговой отчетности, расчету заработной платы и регистрации компании. Демо-сайт; контент вымышленный."
   },
   "keyword": {
     "tr": "mali müşavir, SMMM, muhasebe, beyanname, bordro, şirket kuruluşu",
     "en": "certified accountant, bookkeeping, tax return, payroll, company formation",
-    "ar": "محاسب قانوني، مسك الدفاتر، إقرار ضريبي، رواتب، تأسيس شركة"
+    "ar": "محاسب قانوني، مسك الدفاتر، إقرار ضريبي، رواتب، تأسيس شركة",
+    "de": "Steuerberater, Buchhaltung, Steuererklärung, Lohnabrechnung, Firmengründung",
+    "ru": "финансовый консультант, бухгалтерия, налоговая декларация, расчёт зарплаты, регистрация компании"
   },
   "category": "Kurumsal",
   "name": "Vade Mali Ofis",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

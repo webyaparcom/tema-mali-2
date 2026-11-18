@@ -3,17 +3,23 @@
   "name": {
     "tr": "Teklif iste",
     "en": "Request a quote",
-    "ar": "اطلب عرضًا"
+    "ar": "اطلب عرضًا",
+    "de": "Angebot",
+    "ru": "Запрос"
   },
   "description": {
     "tr": "Üç adımlı teklif sihirbazı (demo).",
     "en": "Three-step quote wizard (demo).",
-    "ar": "معالج العرض في ثلاث خطوات (تجريبي)."
+    "ar": "معالج العرض في ثلاث خطوات (تجريبي).",
+    "de": "Angebotsassistent in drei Schritten (Demo).",
+    "ru": "Мастер расчёта предложения в три шага (демо)."
   },
   "keyword": {
     "tr": "teklif",
     "en": "quote",
-    "ar": "عرض سعر"
+    "ar": "عرض سعر",
+    "de": "Angebot",
+    "ru": "оценка"
   },
   "path": "teklif-al",
   "icon": "request_quote",
@@ -32,7 +38,9 @@
   "title": {
     "tr": "Teklif iste",
     "en": "Request a quote",
-    "ar": "اطلب عرضًا"
+    "ar": "اطلب عرضًا",
+    "de": "Angebot",
+    "ru": "Запрос"
   },
   "date": "2026-11-16T12:10:12.645Z",
   "update": "2026-11-16T12:20:48.392Z"
