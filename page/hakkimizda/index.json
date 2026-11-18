@@ -2,7 +2,9 @@
   "name": {
     "tr": "Ofis",
     "en": "Office",
-    "ar": "المكتب"
+    "ar": "المكتب",
+    "de": "Büro",
+    "ru": "Офис"
   },
   "status": "play",
   "category": "",
@@ -23,7 +25,9 @@
   "description": {
     "tr": "Muhasebe, beyanname ve bordro; ön görüşmeyle.",
     "en": "Bookkeeping, tax returns and payroll; starting with a meeting.",
-    "ar": "المحاسبة والإقرارات والرواتب؛ بدءًا بلقاء."
+    "ar": "المحاسبة والإقرارات والرواتب؛ بدءًا بلقاء.",
+    "de": "Buchhaltung, Steuererklärung und Lohnabrechnung; mit Vorgespräch.",
+    "ru": "Бухгалтерия, декларации и расчёт зарплаты; с предварительной встречей."
   },
   "spot": {
     "tr": "",
@@ -34,12 +38,16 @@
   "title": {
     "tr": "Ofis",
     "en": "Office",
-    "ar": "المكتب"
+    "ar": "المكتب",
+    "de": "Büro",
+    "ru": "Офис"
   },
   "keyword": {
     "tr": "hakkımızda",
     "en": "about",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "text": {},
   "update": "2026-11-16T12:20:48.380Z",

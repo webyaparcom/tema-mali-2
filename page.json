@@ -5,12 +5,16 @@
       "name": {
         "tr": "Hizmetler",
         "en": "Services",
-        "ar": "الخدمات"
+        "ar": "الخدمات",
+        "de": "Leistungen",
+        "ru": "Услуги"
       },
       "description": {
         "tr": "Muhasebe, beyanname, bordro ve kuruluş hizmetleri.",
         "en": "Bookkeeping, returns, payroll and formation services.",
-        "ar": "خدمات المحاسبة والإقرارات والرواتب والتأسيس."
+        "ar": "خدمات المحاسبة والإقرارات والرواتب والتأسيس.",
+        "de": "Buchhaltung, Steuererklärungen, Gehaltsabrechnung und Gründungsdienstleistungen.",
+        "ru": "Бухгалтерия, налоговая отчетность, расчет заработной платы и услуги по созданию компаний."
       },
       "path": "hizmetler",
       "icon": "work",
@@ -30,7 +34,9 @@
       "name": {
         "tr": "Ofis",
         "en": "Office",
-        "ar": "المكتب"
+        "ar": "المكتب",
+        "de": "Büro",
+        "ru": "Офис"
       },
       "status": "play",
       "id": "hakkimizda",
@@ -51,7 +57,9 @@
       "description": {
         "tr": "Muhasebe, beyanname ve bordro; ön görüşmeyle.",
         "en": "Bookkeeping, tax returns and payroll; starting with a meeting.",
-        "ar": "المحاسبة والإقرارات والرواتب؛ بدءًا بلقاء."
+        "ar": "المحاسبة والإقرارات والرواتب؛ بدءًا بلقاء.",
+        "de": "Buchhaltung, Steuererklärung und Lohnabrechnung; mit Vorgespräch.",
+        "ru": "Бухгалтерия, декларации и расчёт зарплаты; с предварительной встречей."
       }
     },
     {
@@ -59,12 +67,16 @@
       "name": {
         "tr": "Müşavirler",
         "en": "Accountants",
-        "ar": "المحاسبون"
+        "ar": "المحاسبون",
+        "de": "Berater",
+        "ru": "Консультанты"
       },
       "description": {
         "tr": "Sizi karşılayan çalışanlarımız.",
         "en": "The staff who welcomes you.",
-        "ar": "الموظفون الذين يستقبلونكم."
+        "ar": "الموظفون الذين يستقبلونكم.",
+        "de": "Unsere Mitarbeiter, die Sie empfangen.",
+        "ru": "Наши сотрудники, которые вас встретят."
       },
       "path": "ekip",
       "icon": "groups",
@@ -84,12 +96,16 @@
       "name": {
         "tr": "Sorular",
         "en": "Questions",
-        "ar": "الأسئلة"
+        "ar": "الأسئلة",
+        "de": "FAQ",
+        "ru": "FAQ"
       },
       "description": {
         "tr": "Merak edilenler ve kısa yanıtlar.",
         "en": "Common questions and short answers.",
-        "ar": "أسئلة متكررة وإجابات موجزة."
+        "ar": "أسئلة متكررة وإجابات موجزة.",
+        "de": "Was Sie wissen möchten, in kurzen Antworten.",
+        "ru": "Что интересует читателей — в коротких ответах."
       },
       "path": "sorular",
       "icon": "help",
@@ -110,12 +126,16 @@
       "name": {
         "tr": "Teklif iste",
         "en": "Request a quote",
-        "ar": "اطلب عرضًا"
+        "ar": "اطلب عرضًا",
+        "de": "Angebot",
+        "ru": "Запрос"
       },
       "description": {
         "tr": "Üç adımlı teklif sihirbazı (demo).",
         "en": "Three-step quote wizard (demo).",
-        "ar": "معالج العرض في ثلاث خطوات (تجريبي)."
+        "ar": "معالج العرض في ثلاث خطوات (تجريبي).",
+        "de": "Angebotsassistent in drei Schritten (Demo).",
+        "ru": "Мастер расчёта предложения в три шага (демо)."
       },
       "path": "teklif-al",
       "icon": "request_quote",
@@ -134,7 +154,9 @@
       "name": {
         "tr": "İletişim",
         "en": "Contact",
-        "ar": "اتصل بنا"
+        "ar": "اتصل بنا",
+        "de": "Kontakt",
+        "ru": "Контакты"
       },
       "status": "play",
       "id": "iletisim",
@@ -155,7 +177,9 @@
       "description": {
         "tr": "Adres, telefon ve çalışma saatleri.",
         "en": "Address, phone and opening hours.",
-        "ar": "العنوان والهاتف وساعات العمل."
+        "ar": "العنوان والهاتف وساعات العمل.",
+        "de": "Adresse, Telefon und Öffnungszeiten.",
+        "ru": "Адрес, телефон и часы работы."
       }
     }
   ],
